@@ -174,6 +174,103 @@ async function loadDashboardData() {
   }
 }
 
+// Create new post
+async function createPost() {
+  const title = document.getElementById("postTitle").value.trim();
+  const content = document.getElementById("postContent").value.trim();
+  const token = localStorage.getItem("token");
+
+  if (!title || !content) {
+    showMessage("postResult", "Title and content are required", "error");
+    return;
+  }
+
+  try {
+    const res = await fetch("/php-structure/api/posts.php", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({ title, content }),
+    });
+
+    const data = await res.json();
+
+    if (res.ok) {
+      showMessage("postResult", "Post created successfully!", "success");
+      // Clear form
+      document.getElementById("postTitle").value = "";
+      document.getElementById("postContent").value = "";
+      // Return to dashboard after a delay
+      setTimeout(() => {
+        showSection("dashboard");
+        loadDashboardData(); // Refresh dashboard data
+      }, 1500);
+    } else {
+      showMessage("postResult", data.error || "Failed to create post", "error");
+    }
+  } catch (error) {
+    showMessage("postResult", "Network error. Please try again.", "error");
+  }
+}
+
+// Update password
+async function updatePassword() {
+  const currentPassword = document.getElementById("currentPassword").value;
+  const newPassword = document.getElementById("newPassword").value;
+  const confirmPassword = document.getElementById("confirmPassword").value;
+  const token = localStorage.getItem("token");
+
+  if (!currentPassword || !newPassword || !confirmPassword) {
+    showMessage("settingsResult", "All fields are required", "error");
+    return;
+  }
+
+  if (newPassword !== confirmPassword) {
+    showMessage("settingsResult", "New passwords do not match", "error");
+    return;
+  }
+
+  try {
+    const res = await fetch("/php-structure/api/update_password.php", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({
+        currentPassword,
+        newPassword,
+      }),
+    });
+
+    const data = await res.json();
+
+    if (res.ok) {
+      showMessage(
+        "settingsResult",
+        "Password updated successfully!",
+        "success"
+      );
+      // Clear form
+      document.getElementById("currentPassword").value = "";
+      document.getElementById("newPassword").value = "";
+      document.getElementById("confirmPassword").value = "";
+      // Return to dashboard after a delay
+      setTimeout(() => showSection("dashboard"), 1500);
+    } else {
+      showMessage(
+        "settingsResult",
+        data.error || "Failed to update password",
+        "error"
+      );
+    }
+  } catch (error) {
+    showMessage("settingsResult", "Network error. Please try again.", "error");
+  }
+}
+
 // Helper function to get activity icon
 function getActivityIcon(type) {
   const icons = {
