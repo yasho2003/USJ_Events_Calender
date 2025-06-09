@@ -5,7 +5,7 @@ A modern PHP application built with an API-first architecture, featuring a separ
 ## Project Structure
 
 ```
-php-structure/
+USJ_Events_Calender/
 ├── api/                    # Backend API endpoints
 │   ├── login.php          # Authentication endpoint
 │   ├── register.php       # User registration
@@ -134,7 +134,7 @@ The application uses the following main tables:
 
    ```bash
    git clone <repository-url>
-   cd php-structure
+   cd USJ_Events_Calender
    ```
 
 2. **Install Dependencies**

@@ -34,7 +34,7 @@ async function register() {
   }
 
   try {
-    const res = await fetch("/php-structure/api/register.php", {
+    const res = await fetch("/USJ_Events_Calender/api/register.php", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ name, email, password }),
@@ -68,7 +68,7 @@ async function login() {
   }
 
   try {
-    const res = await fetch("/php-structure/api/login.php", {
+    const res = await fetch("/USJ_Events_Calender/api/login.php", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email, password }),
@@ -99,7 +99,7 @@ async function loadProfile() {
   }
 
   try {
-    const res = await fetch("/php-structure/api/profile.php", {
+    const res = await fetch("/USJ_Events_Calender/api/profile.php", {
       headers: { Authorization: `Bearer ${token}` },
     });
 
@@ -139,7 +139,7 @@ async function loadDashboardData() {
 
   try {
     // Load statistics
-    const statsRes = await fetch("/php-structure/api/stats.php", {
+    const statsRes = await fetch("/USJ_Events_Calender/api/stats.php", {
       headers: { Authorization: `Bearer ${token}` },
     });
     if (statsRes.ok) {
@@ -150,7 +150,7 @@ async function loadDashboardData() {
     }
 
     // Load recent activity
-    const activityRes = await fetch("/php-structure/api/activity.php", {
+    const activityRes = await fetch("/USJ_Events_Calender/api/activity.php", {
       headers: { Authorization: `Bearer ${token}` },
     });
     if (activityRes.ok) {
@@ -186,7 +186,7 @@ async function createPost() {
   }
 
   try {
-    const res = await fetch("/php-structure/api/posts.php", {
+    const res = await fetch("/USJ_Events_Calender/api/posts.php", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -233,7 +233,7 @@ async function updatePassword() {
   }
 
   try {
-    const res = await fetch("/php-structure/api/update_password.php", {
+    const res = await fetch("/USJ_Events_Calender/api/update_password.php", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
