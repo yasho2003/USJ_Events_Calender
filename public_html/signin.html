@@ -2,29 +2,81 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Sign In</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Create Account</title>
   <link rel="stylesheet" href="signin.css" />
 </head>
 <body>
   <div class="container">
-    <form class="signin-box" onsubmit="return signInUser()">
+    <h1>Create Account</h1>
+    <p class="subtitle">Join the Faculty Events community</p>
+
+    <form id="signup-form">
       <h2>Sign Up</h2>
-      <p>Create an account to get started.</p>
-      
-      <label for="email">Email</label>
-      <input type="email" id="email" placeholder="mno@example.com" required />
+      <p class="form-subtitle">Create your account to get started</p>
 
-      <label for="password">Password</label>
-      <input type="password" id="password" placeholder="••••••••" required />
+      <div class="form-row">
+        <div class="form-group">
+          <label for="firstName">First Name</label>
+          <input type="text" id="firstName" placeholder="First name" required>
+        </div>
+        <div class="form-group">
+          <label for="lastName">Last Name</label>
+          <input type="text" id="lastName" placeholder="Last name" required>
+        </div>
+      </div>
 
-      <label for="confirmPassword">Confirm Password</label>
-      <input type="password" id="confirmPassword" placeholder="••••••••" required />
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" placeholder="Enter your university email" required>
+      </div>
 
-      <button type="submit">Sign up</button>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="department">Department</label>
+          <select id="department" required>
+            <option value="">Select department</option>
+            <option>Computer Science</option>
+            <option>Electrical Engineering</option>
+            <option>Mechanical Engineering</option>
+            <option>Business</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="studentId">Student ID</label>
+          <input type="text" id="studentId" placeholder="FC221XXX" required>
+        </div>
+      </div>
 
-      <p class="login-link">Already have an account? <a href="#">Log in</a></p>
+      <div class="form-group password-group">
+        <label for="password">Password</label>
+        <div class="password-input">
+          <input type="password" id="password" placeholder="Create a password" required>
+          <span class="toggle-password" data-target="password">&#128065;</span>
+        </div>
+      </div>
+
+      <div class="form-group password-group">
+        <label for="confirmPassword">Confirm Password</label>
+        <div class="password-input">
+          <input type="password" id="confirmPassword" placeholder="Confirm your password" required>
+          <span class="toggle-password" data-target="confirmPassword">&#128065;</span>
+        </div>
+      </div>
+
+      <div class="checkbox-group">
+        <label>
+          <input type="checkbox" required>
+          I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>
+        </label>
+      </div>
+
+      <button type="submit">Create Account</button>
     </form>
+
+    <div class="toggle">
+      Already have an account? <a href="login.html">Sign in here</a>
+    </div>
   </div>
 
   <script src="signin.js"></script>
