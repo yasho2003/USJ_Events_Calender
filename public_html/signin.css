@@ -1,0 +1,90 @@
+/* Apply the background image */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: url('3f735779-adc4-4eca-8d8d-67b010462990.png') no-repeat center center fixed;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+/* Centered login box */
+.login-box {
+  background-color: #ffffff;
+  padding: 30px 40px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  max-width: 350px;
+  width: 100%;
+  text-align: center;
+}
+
+.login-box h2 {
+  margin-bottom: 10px;
+  font-size: 26px;
+  color: #111;
+}
+
+.login-box p {
+  margin-bottom: 20px;
+  color: #555;
+}
+
+.login-box label {
+  display: block;
+  margin-top: 10px;
+  text-align: left;
+  font-weight: bold;
+  color: #333;
+}
+
+.login-box input[type="email"],
+.login-box input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  color: #444;
+  margin-bottom: 20px;
+}
+
+.options a {
+  text-decoration: none;
+  color: #3366ff;
+}
+
+button[type="submit"] {
+  background-color: #3366ff;
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 6px;
+  width: 100%;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button[type="submit"]:hover {
+  background-color: #254eda;
+}
+
+.signup-link {
+  margin-top: 15px;
+  font-size: 14px;
+}
+
+.signup-link a {
+  color: #3366ff;
+  text-decoration: none;
+}
