@@ -8,8 +8,6 @@ function signInUser() {
     alert("Passwords do not match!");
     return false;
   }
-
-  // Simulate account creation success
   alert(`Account created for: ${email}`);
-  return false; // Prevent form from submitting
+  return false;
 }
