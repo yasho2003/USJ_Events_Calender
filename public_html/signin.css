@@ -7,14 +7,13 @@ body {
   align-items: center;
   justify-content: center;
   height: 100vh;
-}
-body {
   background-image: url('background.jpg'); 
   background-color: rgba(255, 255, 255, 0.7);
   background-position: center;
-  background-repeat:repeat;
+  background-repeat: repeat;
   min-height: 100vh;
 }
+
 /* Centered sign-in box */
 .signin-box {
   background-color: white;
@@ -22,7 +21,7 @@ body {
   border-radius: 12px;
   box-shadow: 0 4px 16px rgba(0,0,0,0.15);
   width: 100%;
-  max-width: 360px;
+  max-width: 400px;
   text-align: center;
 }
 
@@ -45,15 +44,39 @@ body {
   color: #333;
 }
 
-.signin-box input[type="email"],
-.signin-box input[type="password"] {
+.signin-box input,
+.signin-box select {
   width: 100%;
   padding: 10px;
   margin-bottom: 12px;
   border: 1px solid #ccc;
   border-radius: 6px;
+  font-size: 14px;
 }
 
+/* Two-column layout for rows */
+.form-row {
+  display: flex;
+  gap: 10px;
+}
+
+.form-row .half {
+  flex: 1;
+}
+
+.terms {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  margin-bottom: 16px;
+  text-align: left;
+}
+
+.terms input[type="checkbox"] {
+  margin-right: 8px;
+}
+
+/* Submit button styling */
 button[type="submit"] {
   width: 100%;
   padding: 12px;
