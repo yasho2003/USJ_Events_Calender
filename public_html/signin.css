@@ -2,7 +2,7 @@
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
-  background: url('03d8a953-8dcb-4b13-942b-fcfb34820a0c.png') no-repeat center center fixed;
+  background: url('public_html/background.jpg') no-repeat center center fixed;
   background-size: cover;
   display: flex;
   align-items: center;
