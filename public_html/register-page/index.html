@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sign Up</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <form class="signin-box" onsubmit="return signUpUser()">
+      <h2>Sign Up</h2>
+      <p>Create your account to get started.</p>
+
+      <div class="form-row">
+        <div class="half">
+          <label for="firstName">First Name</label>
+          <input type="text" id="firstName" placeholder="First name" required>
+        </div>
+        <div class="half">
+          <label for="lastName">Last Name</label>
+          <input type="text" id="lastName" placeholder="Last name" required>
+        </div>
+      </div>
+
+      <label for="email">Email Address</label>
+      <input type="email" id="email" placeholder="Enter your university email" required>
+
+      <div class="form-row">
+        <div class="half">
+          <label for="department">Department</label>
+          <select id="department" required>
+            <option value="" disabled selected>Select department</option>
+            <option value="Computer Science">Computer Science</option>
+            <option value="Engineering">Engineering</option>
+            <option value="Business">Business</option>
+            <option value="Arts">Arts</option>
+          </select>
+        </div>
+        <div class="half">
+          <label for="studentId">Student ID</label>
+          <input type="text" id="studentId" placeholder="FC221XXX" required>
+        </div>
+      </div>
+
+      <label for="password">Password</label>
+      <input type="password" id="password" placeholder="Create a password" required>
+
+      <label for="confirmPassword">Confirm Password</label>
+      <input type="password" id="confirmPassword" placeholder="Confirm your password" required>
+
+      <div class="terms">
+        <input type="checkbox" id="agree" required>
+        <label for="agree">I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></label>
+      </div>
+
+      <button type="submit">Create Account</button>
+
+      <p class="login-link">Already have an account? <a href="#">Log in</a></p>
+    </form>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
