@@ -55,6 +55,9 @@ document.addEventListener("DOMContentLoaded", function () {
 async function register(e) {
   e.preventDefault();
   
+  // Clear any previous messages
+  showMessage("regResult", "", "");
+  
   // Get form values
   const firstName = document.getElementById("firstName").value.trim();
   const lastName = document.getElementById("lastName").value.trim();
@@ -76,11 +79,9 @@ async function register(e) {
     passwordLength: password.length
   });
 
-  console.log("FUCK1");
-
   // Client-side validation
-  if (!firstName || !lastName || !email || !department || !studentId || !password || !confirmPassword) {
-    showMessage("regResult", "All fields are required", "error");
+  if (!firstName || !lastName || !email || !password || !confirmPassword) {
+    showMessage("regResult", "Name, email, and password are required", "error");
     return;
   }
 
@@ -99,22 +100,17 @@ async function register(e) {
     return;
   }
 
-  // Email validation (basic university email check)
+  // Email validation (basic email check)
   if (!email.includes('@') || !email.includes('.')) {
     showMessage("regResult", "Please enter a valid email address", "error");
     return;
   }
-
-  console.log("FUCK2");
 
   // Show loading state
   const submitButton = document.querySelector('button[type="submit"]');
   const originalButtonText = submitButton.textContent;
   submitButton.textContent = "Creating Account...";
   submitButton.disabled = true;
-
-  console.log("FUCK3");
-  
 
   try {
     const res = await fetch("/USJ_Events_Calender/api/register.php", {
@@ -124,24 +120,40 @@ async function register(e) {
         name: fullName, 
         email, 
         password,
-        department,
-        studentId
+        department: department || null,
+        studentId: studentId || null
       }),
     });
 
     const data = await res.json();
 
-    console.log("SENUYUUUUUUUUUUUU", data);
+    console.log("API Response:", data);
     
-
-    // if (res.ok) {
-    //   showMessage("regResult", "Registration successful! Redirecting to login...", "success");
-    //   setTimeout(() => {
-    //     window.location.href = "login.html";
-    //   }, 2000);
-    // } else {
-    //   showMessage("regResult", data.error || "Registration failed. Please try again.", "error");
-    // }
+    if (res.ok) {
+      // Success response
+      showMessage("regResult", data.message || "Registration successful! Redirecting to login...", "success");
+      setTimeout(() => {
+        window.location.href = "../login/";
+      }, 2000);
+    } else {
+      // Error response - handle specific error cases
+      let errorMessage = data.error || "Registration failed. Please try again.";
+      
+      // Handle specific error cases for better UX
+      if (res.status === 409) {
+        if (errorMessage.includes("Email")) {
+          errorMessage = "This email is already registered. Please use a different email or try logging in.";
+        } else if (errorMessage.includes("Student ID")) {
+          errorMessage = "This Student ID is already registered. Please check your Student ID or contact support.";
+        }
+      } else if (res.status === 400) {
+        if (errorMessage.includes("email format")) {
+          errorMessage = "Please enter a valid email address.";
+        }
+      }
+      
+      showMessage("regResult", errorMessage, "error");
+    }
   } catch (error) {
     console.error("Registration error:", error);
     showMessage("regResult", "Network error. Please check your connection and try again.", "error");
